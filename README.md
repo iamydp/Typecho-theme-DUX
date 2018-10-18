@@ -15,7 +15,7 @@ Typecho-theme-DUX 是一款基于大前端DUX for Wordpress主题修改而来的
 - 其他页面也有一些或多或少的基于个人喜好的更改
 
 
-＃ 预览地址
+# 预览地址
 https://xu.ci
 
 ![](https://ae01.alicdn.com/kf/HTB1LLiwXEvrK1RjSszf760JNVXaM.png)
