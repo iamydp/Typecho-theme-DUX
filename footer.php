@@ -27,9 +27,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <p>
                     &copy; <?php echo date("Y"); ?> <a href="<?php $this->options ->siteUrl(); ?>"><?php $this->options->title();?></a>
                     <?php if($this->options->miitbeian): ?> | <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow"><?php $this->options->miitbeian(); ?></a><?php endif; ?>
-                    <br>
-                    Powered by <a href="http://www.typecho.org/" target="_blank">Typecho</a> |
-                    Theme <a href="https://github.com/hiCasper/Typecho-theme-DUX" target="_blank">DUX</a>
+                     | Email : <a>hi#xu.ci</a>  |  
+                    Typecho && <a href="https://github.com/hiCasper/Typecho-theme-DUX" target="_blank">DUX</a>
                 </p>
             </div>
             <div class="hide"></div>
@@ -54,5 +53,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->options->GoogleAnalytics(); ?>
 <?php endif; ?>
 
+	
+
+ <!-- end of site. what a ride! -->
 </body>
 </html>

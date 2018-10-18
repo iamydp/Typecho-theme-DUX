@@ -67,7 +67,7 @@ function themeConfig($form) {
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array('ShowRecentPosts' => _t('最新文章'),
             'ShowCategory' => _t('推荐链接，广告位'),
-            'ShowRecentComments' => _t('最新评论'),
+            'ShowRecentComments' => _t('随机推荐'),
             'ShowTags' => _t('标签云')),
             array('ShowRecentPosts', 'ShowCategory', 'ShowRecentComments', 'ShowTags'), _t('侧边栏显示')
         );
@@ -313,6 +313,31 @@ function sitebar_ad($obj) {
     return $b_arr;
 }
 
-
+#随机文章
+function getRandomPosts($limit = 10){    
+    $db = Typecho_Db::get();
+    $result = $db->fetchAll($db->select()->from('table.contents')
+		->where('status = ?','publish')
+		->where('type = ?', 'post')
+		->where('created <= unix_timestamp(now())', 'post')
+		->limit($limit)
+		->order('RAND()')
+	);
+	if($result){
+		$i=1;
+		foreach($result as $val){
+			if($i<=3){
+				$var = ' class="red"';
+			}else{
+				$var = '';
+			}
+			$val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
+			$post_title = htmlspecialchars($val['title']);
+			$permalink = $val['permalink'];
+			echo '<li><i'.$var.'></i><a href="'.$permalink.'" title="'.$post_title.'">'.$post_title.'</a></li>';
+			$i++;
+		}
+	}
+}
 
 ?>

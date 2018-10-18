@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css '); ?>" type="text/css" media="all" />
-
+	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/me.css '); ?>" type="text/css" media="all" />
+	
     <style>
 <?php if ($this->options->indexpic == 'disable'): ?>
         .excerpt {padding-left: 20px !important;}
@@ -37,12 +38,14 @@
     <script> paceOptions = { elements: {selectors: ['#footer']}};</script>
     <script src="//cdn.jsdelivr.net/pace/1.0.2/pace.min.js"></script>
     <!--[if lt IE 9]><script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-
+	
     <?php $this->header('generator=&template=&pingback=&xmlrpc=&wlw=&commentReply=&rss1=&rss2=&atom='); ?>
-</head>
 
-<body class="<?php if ($this->is('index')) : ?>home<?php elseif ($this->is('post')) : ?>single<?php elseif ($this->is('page')) : ?>page<?php elseif ($this->is('archive')) : ?>archive<?php else: ?><?php endif; ?>">
-    <header class="header">
+	</head>
+
+<body class="<?php if ($this->is('index')) : ?>home<?php elseif ($this->is('post')) : ?>post-template-default single single-post postid-129 single-format-standard logged-in admin-bar customize-support mdui-loaded<?php elseif ($this->is('page')) : ?>page<?php elseif ($this->is('archive')) : ?>archive<?php else: ?><?php endif; ?>" itemtype="http://schema.org/WebPage">   
+
+   <header class="header">
         <div class="container">
             <h1 class="logo">
 <?php if (!empty($this->options->logoUrl)): ?>
@@ -54,17 +57,15 @@
             <div class="brand"><?php if($this->options->logotext && !empty($this->options->logotext) ): ?><?php $this->options->logotext(); ?><?php endif; ?></div>
             <ul class="site-nav site-navbar">
                 <li><a href="<?php $this->options ->siteUrl(); ?>"><i class="fa fa-home"></i>首页</a></li>
-<?php $this->widget('Widget_Metas_Category_List')->to($cats); $i=0; while($cats->next()): ?>
-                <li><a href="<?php $cats->permalink()?>"><?php echo fa_ico(1,$i); ?> <?php $cats->name()?></a></li>
-<?php $i++; endwhile; ?>
+<?php $this->widget('Widget_Metas_Category_List')->to($categorys); $i=0; while($categorys->next()): ?>
+<?php if ($categorys->levels === 0): ?>
+                <li><a href="<?php $categorys->permalink()?>"><?php echo fa_ico(1,$i); ?> <?php $categorys->name()?></a></li>
+<?php endif; ?>
+				<?php $i++; endwhile; ?>
 <?php if ($this->options->pagemenu == 'able'): ?>
                 <li>
-                    <a><i class="fa fa-file-text-o"></i>页面</a>
-                    <ul class="sub-menu">
-<?php $this->widget('Widget_Contents_Page_List')->to($pages); while($pages->next()): ?>
-                        <li <?php if($this->is('page', $pages->slug)): ?> class="current-menu-item"<?php endif; ?>><a href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a></li>
-<?php endwhile; ?>
-                    </ul>
+                    <a href="/about.html"><i class="fa fa-file-text-o"></i>关于</a>
+                    
                 </li>
 <?php else: ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages); $i=0; while($pages->next()): ?>
