@@ -1,16 +1,20 @@
 # Typecho-theme-DUX
 
->Forked from https://coding.net/u/Arco-X/p/DUX-for-Typecho/git
+>Forked from https://github.com/hiCasper/Typecho-theme-DUX
 
-一款基于大前端DUX for Wordpress主题修改而来的主题。
+Typecho-theme-DUX 是一款基于大前端DUX for Wordpress主题修改而来的主题。
 
-# 特性
-- 修复了原版不能正常评论的问题
-- 美化了样式，修改细节
-- 增加了一些小功能
+我个人在 Typecho-theme-DUX 的基础上，修改了样式，没改功能
+
+样式来自于WP主题- [Yimik]()
+
+# 样式
+- 修改了文章页样式
+- 修改了侧边栏样式
+- 修改了评论框样式
 
 # 预览地址
-http://blog.hicasper.com
+https://xu.ci
 
 ![Typecho-theme-DUX.png](https://i.loli.net/2018/09/22/5ba5d0e56f3c9.png)
 
